@@ -1,12 +1,57 @@
-body,
-html {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+/*  background and container styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
 }
 
 canvas {
-  display: block;
+    border: 2px solid #333;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Pipe style for connections */
+.pipe-line {
+    color: #42a5f5; /* Light blue pipe color */
+    opacity: 0.9;
+    line-width: 5; /* Increase for thicker pipe */
+    transition: all 0.3s ease-in-out;
+}
+
+.pipe-line:hover {
+    color: #1e88e5; /* Slightly darker blue on hover */
+    opacity: 1;
+    line-width: 6;
+}
+
+/* Node styling for a "mount stick" effect */
+.node-sphere {
+    color: #ff6f61; /* Vibrant red for visibility */
+    radius: 1.5; /* Adjust radius for mount stick look */
+    opacity: 0.85;
+}
+
+.node-sphere:hover {
+    color: #e53935; /* Darker red on hover */
+    radius: 1.75;
+    opacity: 1;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Custom 3D light and shadow effect */
+.ambient-light {
+    color: #ffffff;
+    intensity: 0.5; /* Adjust for a softer or more intense glow */
+}
+
+.directional-light {
+    color: #ffeb3b; /* Slight yellow tint */
+    intensity: 0.3;
+    position: 2px 2px 10px;
 }
