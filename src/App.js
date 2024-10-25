@@ -84,7 +84,7 @@ const findNodeById = (id) => nodeData.find((node) => node.id === id);
 
 function Node({ position }) {
   return (
-    <mesh position={position} scale={[0.3, 0.3, 0.3]}> {/* Further scale down the nodes */}
+    <mesh position={position} scale={[0.8, 0.8, 0.8]}> {/* Scale down by 20% */}
       <sphereGeometry args={[1, 16, 16]} />
       <meshStandardMaterial color="skyblue" />
     </mesh>
@@ -102,18 +102,10 @@ function Connection({ start, end }) {
 
   const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
 
-  // Use a tube geometry for a pipe-like appearance
-  const tubeGeometry = new THREE.TubeGeometry(
-    new THREE.CurvePath().add(new THREE.LineCurve3(...points)), 
-    20, 
-    0.15, // Smaller radius for the tube
-    8
-  );
-
   return (
-    <mesh geometry={tubeGeometry}>
-      <meshStandardMaterial color="orange" />
-    </mesh>
+    <line geometry={lineGeometry}>
+      <lineBasicMaterial color="orange" linewidth={2} />
+    </line>
   );
 }
 
