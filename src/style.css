@@ -11,21 +11,9 @@ body, html {
     align-items: center;
 }
 
-/* Canvas styling to fit the whole screen */
 canvas {
     width: 100vw;
     height: 100vh;
     display: block;
     border: none;
-}
-
-/* Additional styling for pipes and nodes */
-.pipe-line {
-    color: #42a5f5;
-    opacity: 0.9;
-}
-
-.node-sphere {
-    color: #ff6f61;
-    opacity: 0.85;
 }
