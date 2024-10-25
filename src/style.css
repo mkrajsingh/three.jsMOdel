@@ -1,20 +1,12 @@
-/* Fullscreen black background */
-body, html {
-    margin: 0;
-    padding: 0;
-    background-color: #000; /* Black background */
-    overflow: hidden;
-    height: 500vh;
-    width: 500vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 canvas {
-    width: 1000vw;
-    height: 1000vh;
-    display: block;
-    border: none;
-    background-color: #000;
+  display: block;
 }
