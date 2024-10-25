@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
-// Node data with (X, Y, Z) coordinates  extract by mithilesh (raj)
+// Node data with (X, Y, Z) coordinates
 const nodeData = [
   { id: 1, x: -8.7036, y: 0, z: 49.0748 },
   { id: 2, x: -72.9996, y: 0, z: 49.0748 },
@@ -84,7 +84,7 @@ const findNodeById = (id) => nodeData.find((node) => node.id === id);
 
 function Node({ position }) {
   return (
-    <mesh position={position}>
+    <mesh position={position} scale={[0.5, 0.5, 0.5]}> {/* Scale down the nodes */}
       <sphereGeometry args={[1, 16, 16]} />
       <meshStandardMaterial color="skyblue" />
     </mesh>
@@ -102,10 +102,18 @@ function Connection({ start, end }) {
 
   const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
 
+  // Use a tube geometry for a more pipe-like appearance
+  const tubeGeometry = new THREE.TubeGeometry(
+    new THREE.CurvePath().add(new THREE.LineCurve3(...points)), 
+    20, 
+    0.2, 
+    8
+  );
+
   return (
-    <line geometry={lineGeometry}>
-      <lineBasicMaterial color="orange" linewidth={2} />
-    </line>
+    <mesh geometry={tubeGeometry}>
+      <meshStandardMaterial color="orange" />
+    </mesh>
   );
 }
 
@@ -127,7 +135,10 @@ function Network() {
 
 export default function App() {
   return (
-    <Canvas camera={{ position: [0, 0, 150], fov: 50 }}>
+    <Canvas
+      camera={{ position: [0, 0, 150], fov: 50 }}
+      style={{ background: 'black' }} // Set background color to black
+    >
       <ambientLight intensity={0.5} />
       <Suspense fallback={null}>
         <Network />
