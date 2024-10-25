@@ -84,9 +84,9 @@ const findNodeById = (id) => nodeData.find((node) => node.id === id);
 
 function Node({ position }) {
   return (
-    <mesh position={position} scale={[0.5, 0.5, 0.5]}> {/* Scale down by 50% */}
+    <mesh position={position} scale={[0.5, 0.5, 0.5]}>
       <sphereGeometry args={[1, 16, 16]} />
-      <meshStandardMaterial color="red" /> {/* Set node color to red */}
+      <meshStandardMaterial color="red" />
     </mesh>
   );
 }
@@ -96,15 +96,15 @@ function Connection({ start, end }) {
   const endNode = findNodeById(end);
 
   const points = [
-    new THREE.Vector3(startNode.x, startNode.y, startNode.z),
-    new THREE.Vector3(endNode.x, endNode.y, endNode.z),
+    new THREE.Vector3(startNode.x * 0.5, startNode.y, startNode.z * 0.5), // Adjusted for centering
+    new THREE.Vector3(endNode.x * 0.5, endNode.y, endNode.z * 0.5), // Adjusted for centering
   ];
 
   const lineGeometry = new THREE.BufferGeometry().setFromPoints(points);
 
   return (
     <line geometry={lineGeometry}>
-      <lineBasicMaterial color="white" linewidth={2} /> {/* Set pipe color to white */}
+      <lineBasicMaterial color="white" />
     </line>
   );
 }
@@ -112,12 +112,9 @@ function Connection({ start, end }) {
 function Network() {
   return (
     <>
-      {/* Render all nodes */}
       {nodeData.map((node) => (
-        <Node key={node.id} position={[node.x * 0.5, node.y, node.z * 0.5]} /> {/* Center the nodes */}
+        <Node key={node.id} position={[node.x * 0.5, node.y, node.z * 0.5]} />
       ))}
-
-      {/* Render all connections */}
       {connections.map((conn, index) => (
         <Connection key={index} start={conn.start} end={conn.end} />
       ))}
