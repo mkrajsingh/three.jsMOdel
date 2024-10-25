@@ -84,9 +84,9 @@ const findNodeById = (id) => nodeData.find((node) => node.id === id);
 
 function Node({ position }) {
   return (
-    <mesh position={position} scale={[0.8, 0.8, 0.8]}> {/* Scale down by 20% */}
+    <mesh position={position} scale={[0.5, 0.5, 0.5]}> {/* Scale down by 50% */}
       <sphereGeometry args={[1, 16, 16]} />
-      <meshStandardMaterial color="skyblue" />
+      <meshStandardMaterial color="red" /> {/* Set node color to red */}
     </mesh>
   );
 }
@@ -104,7 +104,7 @@ function Connection({ start, end }) {
 
   return (
     <line geometry={lineGeometry}>
-      <lineBasicMaterial color="orange" linewidth={2} />
+      <lineBasicMaterial color="white" linewidth={2} /> {/* Set pipe color to white */}
     </line>
   );
 }
@@ -114,7 +114,7 @@ function Network() {
     <>
       {/* Render all nodes */}
       {nodeData.map((node) => (
-        <Node key={node.id} position={[node.x, node.y, node.z]} />
+        <Node key={node.id} position={[node.x * 0.5, node.y, node.z * 0.5]} /> {/* Center the nodes */}
       ))}
 
       {/* Render all connections */}
