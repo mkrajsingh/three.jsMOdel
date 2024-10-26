@@ -15,7 +15,7 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/your-username/3d-network-visualization.git
+git clone https://github.com/https://github.com/mkrajsingh/3d-network-visualization.git
 cd 3d-network-visualization
 Install Dependencies:
 
